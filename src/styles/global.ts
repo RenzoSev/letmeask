@@ -8,8 +8,8 @@ export default createGlobalStyle `
     }
 
     body {
-      background: #f8f8f8;
-      color: #29292e;
+      background: ${({ theme }) => theme.colors.background};
+      color: ${({ theme }) => theme.colors.text};
     }
 
     body, input, button, textarea {
