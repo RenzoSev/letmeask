@@ -1,4 +1,5 @@
 import Home from './pages/Home';
+import NewRoom from './pages/NewRoom';
 import { ThemeProvider } from 'styled-components';
 
 import light from './styles/themes/light';
@@ -10,7 +11,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Home />
+      <NewRoom />
     </ThemeProvider>
   );
 }
