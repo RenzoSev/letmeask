@@ -1,10 +1,21 @@
-import illustrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
-import googleIconImg from '../assets/images/google-icon.svg';
-import { PageAuth, MainContent, Separator, ButtonCreateRoom } from '../styles/auth';
+
+import { useHistory } from 'react-router-dom';
+
 import Button from '../components/Button';
 
+import { PageAuth, MainContent, Separator, ButtonCreateRoom } from '../styles/auth';
+
+import illustrationImg from '../assets/images/illustration.svg';
+import googleIconImg from '../assets/images/google-icon.svg';
+import logoImg from '../assets/images/logo.svg';
+
 export function Home() {
+  const history = useHistory();
+
+  function navigateToNewRoom() {
+    history.push('/rooms/new');
+  }
+  
   return (
     <PageAuth>
       <aside>
@@ -15,7 +26,7 @@ export function Home() {
       <main>
         <MainContent>
           <img src={logoImg} alt="Letmeask" />
-          <ButtonCreateRoom>
+          <ButtonCreateRoom onClick={navigateToNewRoom}>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
           </ButtonCreateRoom>
