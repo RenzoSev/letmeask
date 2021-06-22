@@ -77,6 +77,32 @@ export const MainContent = styled.div`
   }
 `;
 
+export const ButtonCreateRoom = styled.button`
+  margin-top: 64px;
+  height:50px;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #ea4335;
+  color: #FFF;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  border: 0;
+
+  transition: filter 0.2s;
+
+  img {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    filter: brightness(0.9)
+  }
+`;
+
 export const Separator = styled.div`
   font-size: 14px;
   color: #a8a8b3;
@@ -101,4 +127,3 @@ export const Separator = styled.div`
     margin-left: 16px;
   }
 `;
-

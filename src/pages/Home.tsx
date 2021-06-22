@@ -1,7 +1,8 @@
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
-import { PageAuth, MainContent, Separator } from '../styles/auth';
+import { PageAuth, MainContent, Separator, ButtonCreateRoom } from '../styles/auth';
+import Button from '../components/Button';
 
 export function Home() {
   return (
@@ -14,18 +15,18 @@ export function Home() {
       <main>
         <MainContent>
           <img src={logoImg} alt="Letmeask" />
-          <button>
+          <ButtonCreateRoom>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
-          </button>
+          </ButtonCreateRoom>
           <Separator>ou entre em uma sala</Separator>
           <form>
             <input 
               placeholder="Digite o código da sala"
             />
-            <button type="submit">
+            <Button type="submit">
               Entrar na sala
-            </button>
+            </Button>
           </form>
         </MainContent>
       </main>
