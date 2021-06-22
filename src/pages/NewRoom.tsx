@@ -1,15 +1,14 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../components/Button';
-import { AuthContext } from '../App';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import { PageAuth, MainContent } from '../styles/auth';
+import { useAuth } from '../hooks/useAuth';
 
 function NewRoom() {
-  const { user } = useContext(AuthContext)
+  const { user, signInWithGoogle } = useAuth();
   
   return (
     <PageAuth>
@@ -21,7 +20,6 @@ function NewRoom() {
       <main>
         <MainContent>
           <img src={logoImg} alt="Letmeask" />
-          <h1>{user?.name}</h1>
           <h2>Criar uma nova sala</h2>
           <form>
             <input 
