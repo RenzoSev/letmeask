@@ -1,4 +1,7 @@
+import { useParams } from 'react-router-dom';
+
 import Button from '../components/Button';
+import RoomCode from '../components/RoomCode';
 import logoImg from '../assets/images/logo.svg';
 import {
   PageRoom,
@@ -8,13 +11,19 @@ import {
   FormFooter,
 } from '../styles/room';
 
+type RoomParams = {
+  id: string;
+}
+
 export function Room() {
+  const params = useParams<RoomParams>();
+  
   return (
     <PageRoom>
       <header>
         <DivContent>
           <img src={logoImg} alt="Letmeask" />
-          <div>codigo</div>
+          <RoomCode code={params.id} />
         </DivContent>
       </header>
 
