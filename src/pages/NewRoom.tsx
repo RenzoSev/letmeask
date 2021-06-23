@@ -50,7 +50,7 @@ function NewRoom() {
           <form onSubmit={handleCreateRoom}>
             <input
               placeholder="Nome da sala"
-              onChange={(e) => setNewRoom(e.target.value)}
+              onChange={({target}) => setNewRoom(target.value)}
               value={newRoom}
             />
             <Button type="submit">Criar sala</Button>
