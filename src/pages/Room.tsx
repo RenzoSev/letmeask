@@ -29,6 +29,17 @@ type FireBaseQuestions = Record<
   }
 >;
 
+type Question = {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  content: string;
+  isAnswered: boolean;
+  isHighlighted: boolean;
+};
+
 type RoomParams = {
   id: string;
 };
@@ -37,33 +48,37 @@ export function Room() {
   const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [title, setTitle] = useState('');
 
   const roomId = params.id;
 
   useEffect(() => {
     const roomRef = database.ref(`rooms/${roomId}`);
 
-    roomRef.once('value', (room) => {
+    roomRef.on('value', (room) => {
       const databaseRoom = room.val();
       const firebaseQuestions: FireBaseQuestions = databaseRoom.questions ?? {};
-      
-      const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isHighlighted: value.isHighlighted,
-          isAnswered: value.isAnswered,
-        };
-      });
 
-      console.log(parsedQuestion);
+      const parsedQuestion = Object.entries(firebaseQuestions).map(
+        ([key, value]) => {
+          return {
+            id: key,
+            content: value.content,
+            author: value.author,
+            isHighlighted: value.isHighlighted,
+            isAnswered: value.isAnswered,
+          };
+        }
+      );
+      setTitle(databaseRoom.title);
+      setQuestions(parsedQuestion);
     });
   }, [roomId]);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
-    
+
     if (newQuestion.trim() === '') {
       return;
     }
@@ -97,8 +112,12 @@ export function Room() {
 
       <MainContent>
         <RoomTitle>
-          <h1>Sala React</h1>
-          <span>4 perguntas</span>
+          <h1>{title}</h1>
+          {questions.length > 0 && (
+            <span>
+              {questions.length} {questions.length > 1 ? 'perguntas' : 'pergunta'}
+            </span>
+          )}
         </RoomTitle>
 
         <form onSubmit={handleSendQuestion}>
@@ -113,7 +132,7 @@ export function Room() {
           <FormFooter>
             {user ? (
               <UserInfo>
-                <img src={user.avatar} alt={user.name}/>
+                <img src={user.avatar} alt={user.name} />
                 <span>{user.name}</span>
               </UserInfo>
             ) : (
@@ -127,6 +146,8 @@ export function Room() {
             </Button>
           </FormFooter>
         </form>
+
+        {JSON.stringify(questions)}
       </MainContent>
     </PageRoom>
   );
