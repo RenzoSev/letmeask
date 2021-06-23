@@ -11,6 +11,7 @@ import {
   MainContent,
   RoomTitle,
   FormFooter,
+  UserInfo,
 } from '../styles/room';
 import { useAuth } from '../hooks/useAuth';
 
@@ -75,10 +76,20 @@ export function Room() {
           />
 
           <FormFooter>
-            <span>
-              Para enviar uma pergunta, <button>faça seu login</button>.
-            </span>
-            <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+            {user ? (
+              <UserInfo>
+                <img src={user.avatar} alt={user.name}/>
+                <span>{user.name}</span>
+              </UserInfo>
+            ) : (
+              <span>
+                Para enviar uma pergunta, <button>faça seu login</button>.
+              </span>
+            )}
+
+            <Button type="submit" disabled={!user}>
+              Enviar pergunta
+            </Button>
           </FormFooter>
         </form>
       </MainContent>
