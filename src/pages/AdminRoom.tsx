@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
 
@@ -24,13 +24,12 @@ type RoomParams = {
   id: string;
 };
 
-export default function Room() {
+export default function AdminRoom() {
   const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
-
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -62,7 +61,10 @@ export default function Room() {
       <header>
         <DivContent>
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={roomId} />
+          <div>
+            <RoomCode code={roomId} />
+            <Button isOutlined>Encerrar sala</Button>
+          </div>
         </DivContent>
       </header>
 
@@ -71,48 +73,21 @@ export default function Room() {
           <h1>{title}</h1>
           {questions.length > 0 && (
             <span>
-              {questions.length} {questions.length > 1 ? 'perguntas' : 'pergunta'}
+              {questions.length}{' '}
+              {questions.length > 1 ? 'perguntas' : 'pergunta'}
             </span>
           )}
         </RoomTitle>
 
-        <form onSubmit={handleSendQuestion}>
-          <textarea
-            placeholder="O que você quer perguntar?"
-            onChange={({ target }) => {
-              setNewQuestion(target.value);
-            }}
-            value={newQuestion}
-          />
-
-          <FormFooter>
-            {user ? (
-              <UserInfo>
-                <img src={user.avatar} alt={user.name} />
-                <span>{user.name}</span>
-              </UserInfo>
-            ) : (
-              <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
-              </span>
-            )}
-
-            <Button type="submit" disabled={!user}>
-              Enviar pergunta
-            </Button>
-          </FormFooter>
-        </form>
-
         <DivQuestionList>
           {questions.map((question) => (
-            <Question 
+            <Question
               key={question.id}
               content={question.content}
               author={question.author}
             />
           ))}
         </DivQuestionList>
-
       </MainContent>
     </PageRoom>
   );

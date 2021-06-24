@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 
-export const ButtonStyled = styled.button`
-  height:50px;
+type ButtonStyledProps = {
+  isOutlined: boolean;
+};
+
+export const ButtonStyled = styled.button<ButtonStyledProps>`
+  height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: #835afd;
-  color: #FFF;
+  background: ${({ isOutlined }) => (isOutlined ? '#FFF' : '#835afd')};
+  border: ${({ isOutlined }) => (isOutlined ? '1px solid #835afd' : 0)};
+  color: ${({ isOutlined }) => (isOutlined ? '#835afd' : '#FFF')};
   padding: 0 32px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
-  border: 0;
 
   transition: filter 0.2s;
 
@@ -21,8 +25,8 @@ export const ButtonStyled = styled.button`
     margin-right: 8px;
   }
 
-  &:not(:disabled):hover{
-    filter: brightness(0.9)
+  &:not(:disabled):hover {
+    filter: brightness(0.9);
   }
 
   &:disabled {

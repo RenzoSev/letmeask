@@ -31,6 +31,15 @@ export const DivContent = styled.div`
     > img {
       max-height: 45px;
     }
+
+    > div {
+      display: flex;
+      gap: 16px;
+
+      button {
+        height: 40px;
+      }
+    }
 `;
 
 export const MainContent = styled.main`
