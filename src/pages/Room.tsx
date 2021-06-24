@@ -7,6 +7,7 @@ import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
 
 import { useAuth } from '../hooks/useAuth';
+import { useRoom } from '../hooks/useRoom';
 
 import logoImg from '../assets/images/logo.svg';
 import {
@@ -19,7 +20,6 @@ import {
   DivQuestionList,
   LikeButton,
 } from '../styles/room';
-import { useRoom } from '../hooks/useRoom';
 
 type RoomParams = {
   id: string;

@@ -7,6 +7,8 @@ import Question from '../components/Question';
 import { useAuth } from '../hooks/useAuth';
 
 import logoImg from '../assets/images/logo.svg';
+import deleteImg from '../assets/images/delete.svg';
+
 import {
   PageRoom,
   DivContent,
@@ -15,6 +17,7 @@ import {
   DivQuestionList,
 } from '../styles/room';
 import { useRoom } from '../hooks/useRoom';
+import { database } from '../services/firebase';
 
 type RoomParams = {
   id: string;
@@ -25,6 +28,16 @@ export default function AdminRoom() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
+
+  // async function handleEndRoom() {
+  //   database.ref(`ro`)
+  // }
+
+  async function handleDeleteQuestion(questionId: string) {
+   if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
+     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+   }
+  }
 
   return (
     <PageRoom>
@@ -55,7 +68,11 @@ export default function AdminRoom() {
               key={question.id}
               content={question.content}
               author={question.author}
-            />
+            >
+              <button type="button" onClick={() => handleDeleteQuestion(question.id)}>
+                <img src={deleteImg} alt="Remover pergunta" />
+              </button>
+            </Question>
           ))}
         </DivQuestionList>
       </MainContent>
