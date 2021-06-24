@@ -99,3 +99,7 @@ export const UserInfo = styled.div`
     font-size: 14px;
   }
 `;
+
+export const DivQuestionList = styled.div`
+  margin-top: 32px;
+`;

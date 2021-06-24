@@ -1,9 +1,13 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
 
 import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
+import Question from '../components/Question';
+
+import { useAuth } from '../hooks/useAuth';
+
 import logoImg from '../assets/images/logo.svg';
 import {
   PageRoom,
@@ -12,9 +16,8 @@ import {
   RoomTitle,
   FormFooter,
   UserInfo,
+  DivQuestionList,
 } from '../styles/room';
-import { useAuth } from '../hooks/useAuth';
-import { useEffect } from 'react';
 
 type FireBaseQuestions = Record<
   string,
@@ -147,7 +150,16 @@ export function Room() {
           </FormFooter>
         </form>
 
-        {JSON.stringify(questions)}
+        <DivQuestionList>
+          {questions.map((question) => (
+            <Question 
+              key={question.id}
+              content={question.content}
+              author={question.author}
+            />
+          ))}
+        </DivQuestionList>
+
       </MainContent>
     </PageRoom>
   );
