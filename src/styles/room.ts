@@ -112,3 +112,22 @@ export const UserInfo = styled.div`
 export const DivQuestionList = styled.div`
   margin-top: 32px;
 `;
+
+export const LikeButton = styled.button`
+  display: flex;
+  align-items: flex-end;
+  color: #737380;
+  gap: 8px;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+
+  &.like-button {
+    color: #835afd;
+    svg path {
+      stroke: #835afd;
+    }
+  }
+`;

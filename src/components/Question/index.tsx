@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { DivQuestion, DivUserInfo } from './styles';
 
 type QuestionProps = {
@@ -6,9 +8,10 @@ type QuestionProps = {
     name: string;
     avatar: string;
   };
+  children?: ReactNode;
 };
 
-export default function Question({ content, author }: QuestionProps) {
+export default function Question({ content, author, children }: QuestionProps) {
   return (
     <DivQuestion className="question">
       <p>{content}</p>
@@ -19,7 +22,7 @@ export default function Question({ content, author }: QuestionProps) {
           <span>{author.name}</span>
         </DivUserInfo>
 
-        <div></div>
+        <div>{children}</div>
       </footer>
     </DivQuestion>
   );

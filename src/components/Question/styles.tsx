@@ -19,6 +19,12 @@ export const DivQuestion = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 24px;
+
+    button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
   }
 `;
 
