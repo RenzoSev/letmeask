@@ -1,8 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Room from './pages/Room';
+import AdminRoom from './pages/AdminRoom';
 import NewRoom from './pages/NewRoom';
-import { Room } from './pages/Room';
 
 import { AuthContextProvider } from './contexts/AuthContext';
 
@@ -21,7 +22,8 @@ export function App() {
         <Switch>
           <Route path="/rooms/new" component={NewRoom} />
           <Route path="/rooms/:id" component={Room} />
-          <Route path="/" component={Home} />
+          <Route path="/admin/rooms/:id" component={AdminRoom} />
+          <Route path="/" component={Home} exact />
         </Switch>
       </AuthContextProvider>
     </ThemeProvider>

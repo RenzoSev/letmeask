@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type LikeButtonProps = {
+  hasLiked: boolean;
+};
+
 export const PageRoom = styled.div`
   header {
     padding: 24px;
@@ -30,6 +34,15 @@ export const DivContent = styled.div`
 
     > img {
       max-height: 45px;
+    }
+
+    > div {
+      display: flex;
+      gap: 16px;
+
+      button {
+        height: 40px;
+      }
     }
 `;
 
@@ -97,5 +110,25 @@ export const UserInfo = styled.div`
     color: #29292e;
     font-weight: 500;
     font-size: 14px;
+  }
+`;
+
+export const DivQuestionList = styled.div`
+  margin-top: 32px;
+`;
+
+export const LikeButton = styled.button<LikeButtonProps>`
+  display: flex;
+  align-items: flex-end;
+  color: ${({ hasLiked }) => (hasLiked ? '#835afd' : '#737380')};
+  gap: 8px;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+
+  svg path {
+    stroke: ${({ hasLiked }) => (hasLiked ? '#835afd' : '#737380')};
   }
 `;
