@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonRoomCode = styled.button`
+const ButtonRoomCode = styled.button`
   height: 40px;
   border-radius: 8px;
   overflow: hidden;
@@ -30,3 +30,5 @@ export const ButtonRoomCode = styled.button`
     font-weight: 500;
   }
 `;
+
+export default ButtonRoomCode;

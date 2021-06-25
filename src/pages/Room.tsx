@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 
-import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
 
@@ -8,8 +7,8 @@ import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
 
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
+import useAuth from '../hooks/useAuth';
+import useRoom from '../hooks/useRoom';
 
 import logoImg from '../assets/images/logo.svg';
 import {
@@ -27,7 +26,7 @@ type RoomParams = {
   id: string;
 };
 
-export default function Room(): JSX.Element {
+export default function Room() {
   const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
@@ -61,7 +60,7 @@ export default function Room(): JSX.Element {
 
   async function handleLikeQuestion(
     questionId: string,
-    likeId: string | undefined
+    likeId: string | undefined,
   ) {
     if (likeId) {
       await database
@@ -88,7 +87,8 @@ export default function Room(): JSX.Element {
           <h1>{title}</h1>
           {questions.length > 0 && (
             <span>
-              {questions.length}{' '}
+              {questions.length}
+              {' '}
               {questions.length > 1 ? 'perguntas' : 'pergunta'}
             </span>
           )}
@@ -111,7 +111,10 @@ export default function Room(): JSX.Element {
               </UserInfo>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                Para enviar uma pergunta,
+                {' '}
+                <button type="button">faça seu login</button>
+                .
               </span>
             )}
 
@@ -135,9 +138,7 @@ export default function Room(): JSX.Element {
                   hasLiked={!!question.likeId}
                   type="button"
                   aria-label="Marcar como gostei"
-                  onClick={() =>
-                    handleLikeQuestion(question.id, question.likeId)
-                  }
+                  onClick={() => handleLikeQuestion(question.id, question.likeId)}
                 >
                   {question.likeCount > 0 && <span>{question.likeCount}</span>}
                   <svg

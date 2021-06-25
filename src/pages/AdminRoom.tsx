@@ -6,6 +6,9 @@ import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
 
+import useRoom from '../hooks/useRoom';
+import { database } from '../services/firebase';
+
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
@@ -18,14 +21,12 @@ import {
   RoomTitle,
   DivQuestionList,
 } from '../styles/room';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
 
 type RoomParams = {
   id: string;
 };
 
-export default function AdminRoom(): JSX.Element {
+export default function AdminRoom() {
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
@@ -76,7 +77,8 @@ export default function AdminRoom(): JSX.Element {
           <h1>{title}</h1>
           {questions.length > 0 && (
             <span>
-              {questions.length}{' '}
+              {questions.length}
+              {' '}
               {questions.length > 1 ? 'perguntas' : 'pergunta'}
             </span>
           )}

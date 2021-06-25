@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 
-import { FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import Button from '../components/Button';
 
+import useAuth from '../hooks/useAuth';
+import { database } from '../services/firebase';
+
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import { PageAuth, MainContent } from '../styles/auth';
-import { useAuth } from '../hooks/useAuth';
-import { useState } from 'react';
-import { database } from '../services/firebase';
 
-function NewRoom(): JSX.Element {
+function NewRoom() {
   const { user } = useAuth();
   const history = useHistory();
   const [newRoom, setNewRoom] = useState('');
@@ -58,7 +57,9 @@ function NewRoom(): JSX.Element {
             <Button type="submit">Criar sala</Button>
           </form>
           <p>
-            Quer entar em uma sala existente? <Link to="/">Clique aqui</Link>
+            Quer entar em uma sala existente?
+            {' '}
+            <Link to="/">Clique aqui</Link>
           </p>
         </MainContent>
       </main>

@@ -12,8 +12,10 @@ type AuthContextType = {
   signInWithGoogle: () => Promise<void>;
 };
 
-export function useAuth(): AuthContextType {
+function useAuth(): AuthContextType {
   const value = useContext(AuthContext);
 
   return value;
 }
+
+export default useAuth;

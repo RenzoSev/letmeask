@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 
-import { FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 import { database } from '../services/firebase';
 
 import {
@@ -17,9 +16,8 @@ import {
 import illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.svg';
-import { useState } from 'react';
 
-export function Home(): JSX.Element {
+export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
   const [roomCode, setRoomCode] = useState('');

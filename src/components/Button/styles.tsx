@@ -4,7 +4,7 @@ type ButtonStyledProps = {
   isOutlined: boolean;
 };
 
-export const ButtonStyled = styled.button<ButtonStyledProps>`
+const ButtonStyled = styled.button<ButtonStyledProps>`
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
@@ -34,3 +34,5 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
     cursor: not-allowed;
   }
 `;
+
+export default ButtonStyled;
