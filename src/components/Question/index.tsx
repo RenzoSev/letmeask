@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import cx from 'classnames';
 
 import { DivQuestion, DivUserInfo } from './styles';
 
@@ -9,15 +10,29 @@ type QuestionProps = {
     avatar: string;
   };
   children?: ReactNode;
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
 };
 
-export default function Question({ content, author, children }: QuestionProps) {
+export default function Question({
+  content,
+  author,
+  children,
+  isAnswered = false,
+  isHighlighted = false,
+}: QuestionProps) {
   return (
-    <DivQuestion className="question">
+    <DivQuestion
+      className={cx(
+        'question',
+        { answered: isAnswered },
+        { highlighted: isHighlighted && !isAnswered}
+      )}
+    >
       <p>{content}</p>
 
       <footer>
-        <DivUserInfo>
+        <DivUserInfo isHighlighted={isHighlighted}>
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
         </DivUserInfo>

@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
+type DivUserInfoProps = {
+  isHighlighted: boolean;
+};
+
 export const DivQuestion = styled.div`
   background: #fefefe;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   padding: 24px;
+  transition: filter 0.4s;
 
   & + .question {
     margin-top: 8px;
@@ -14,12 +19,22 @@ export const DivQuestion = styled.div`
     color: #29292e;
   }
 
+
+  &.highlighted {
+    background: #f4f0ff;
+    border: 1px solid #835afd;
+  }
+
+  &.answered {
+    background: #DBDCDD;
+  }
+
   footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 24px;
-    
+
     > div {
       display: flex;
       gap: 16px;
@@ -33,7 +48,7 @@ export const DivQuestion = styled.div`
   }
 `;
 
-export const DivUserInfo = styled.div`
+export const DivUserInfo = styled.div<DivUserInfoProps>`
   display: flex;
   align-items: center;
 
@@ -45,7 +60,7 @@ export const DivUserInfo = styled.div`
 
   span {
     margin-left: 8px;
-    color: #737380;
+    color: ${(isHighlighted) => (isHighlighted ? '#29292E' : '#737380')};
     font-size: 14px;
   }
 `;
