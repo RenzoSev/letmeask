@@ -7,7 +7,7 @@ type LikeButtonProps = {
 export const PageRoom = styled.div`
   header {
     padding: 24px;
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderHeader};
   }
 
   form {
@@ -16,7 +16,7 @@ export const PageRoom = styled.div`
       border: 0;
       padding: 16px;
       border-radius: 8px;
-      background: #fefefe;
+      background: ${({ theme }) => theme.colors.primary};
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
       resize: vertical;
       min-height: 130px;
@@ -107,7 +107,7 @@ export const UserInfo = styled.div`
 
   span {
     margin-left: 8px;
-    color: #29292e;
+    color: ${({ theme }) => theme.colors.text};
     font-weight: 500;
     font-size: 14px;
   }

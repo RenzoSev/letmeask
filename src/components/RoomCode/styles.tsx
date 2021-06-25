@@ -5,7 +5,8 @@ const ButtonRoomCode = styled.button`
   border-radius: 8px;
   overflow: hidden;
 
-  background: #fff;
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.text};
   border: 1px solid #835afd;
   cursor: pointer;
 

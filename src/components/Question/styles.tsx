@@ -5,7 +5,7 @@ type DivUserInfoProps = {
 };
 
 export const DivQuestion = styled.div`
-  background: #fefefe;
+  background: ${({ theme }) => theme.colors.primary};
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   padding: 24px;
@@ -16,17 +16,16 @@ export const DivQuestion = styled.div`
   }
 
   p {
-    color: #29292e;
+    color: ${({ theme }) => theme.colors.text};
   }
 
-
   &.highlighted {
-    background: #f4f0ff;
+    background: ${({ theme }) => theme.colors.highlight};
     border: 1px solid #835afd;
   }
 
   &.answered {
-    background: #DBDCDD;
+    background: ${({ theme }) => theme.colors.secundary};
   }
 
   footer {
@@ -60,7 +59,9 @@ export const DivUserInfo = styled.div<DivUserInfoProps>`
 
   span {
     margin-left: 8px;
-    color: ${(isHighlighted) => (isHighlighted ? '#29292E' : '#737380')};
+    color: ${(props) => (props.isHighlighted
+    ? props.theme.colors.text
+    : props.theme.colors.textSecundary)};
     font-size: 14px;
   }
 `;
