@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -17,7 +19,7 @@ import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.svg';
 import { useState } from 'react';
 
-export function Home() {
+export function Home(): JSX.Element {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
   const [roomCode, setRoomCode] = useState('');

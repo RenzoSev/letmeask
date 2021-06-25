@@ -1,11 +1,13 @@
+import React from 'react';
+
 import { ButtonRoomCode } from './styles';
 import copyImg from '../../assets/images/copy.svg';
 
 type RoomCodeProps = {
   code: string;
-}
+};
 
-export default function RoomCode(props: RoomCodeProps) {
+export default function RoomCode(props: RoomCodeProps): JSX.Element {
   function copyRoomCodeToClipboard() {
     navigator.clipboard.writeText(props.code);
   }

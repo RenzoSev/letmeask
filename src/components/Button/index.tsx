@@ -5,6 +5,9 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isOutlined?: boolean;
 };
 
-export default function Button({ isOutlined = false, ...props }: ButtonProps) {
+export default function Button({
+  isOutlined = false,
+  ...props
+}: ButtonProps): JSX.Element {
   return <ButtonStyled isOutlined={isOutlined} {...props} />;
 }

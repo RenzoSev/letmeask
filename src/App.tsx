@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -11,7 +13,7 @@ import { ThemeProvider } from 'styled-components';
 import light from './styles/themes/light';
 import GlobalStyle from './styles/global'
 
-export function App() {
+export function App(): JSX.Element {
   const theme = light;
   
   return (

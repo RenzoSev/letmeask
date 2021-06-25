@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
@@ -25,7 +27,7 @@ type RoomParams = {
   id: string;
 };
 
-export default function Room() {
+export default function Room(): JSX.Element {
   const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
@@ -57,9 +59,14 @@ export default function Room() {
     setNewQuestion('');
   }
 
-  async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
+  async function handleLikeQuestion(
+    questionId: string,
+    likeId: string | undefined
+  ) {
     if (likeId) {
-       await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+        .remove();
     } else {
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
         authorId: user?.id,

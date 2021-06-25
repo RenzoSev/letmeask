@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -10,7 +12,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useState } from 'react';
 import { database } from '../services/firebase';
 
-function NewRoom() {
+function NewRoom(): JSX.Element {
   const { user } = useAuth();
   const history = useHistory();
   const [newRoom, setNewRoom] = useState('');
@@ -29,7 +31,7 @@ function NewRoom() {
       authorId: user?.id,
     });
 
-    history.push(`/rooms/${firebaseRoom.key}`)
+    history.push(`/rooms/${firebaseRoom.key}`);
   }
 
   return (
@@ -50,7 +52,7 @@ function NewRoom() {
           <form onSubmit={handleCreateRoom}>
             <input
               placeholder="Nome da sala"
-              onChange={({target}) => setNewRoom(target.value)}
+              onChange={({ target }) => setNewRoom(target.value)}
               value={newRoom}
             />
             <Button type="submit">Criar sala</Button>

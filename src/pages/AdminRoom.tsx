@@ -1,10 +1,10 @@
+import React from 'react';
+
 import { useHistory, useParams } from 'react-router-dom';
 
 import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
-
-import { useAuth } from '../hooks/useAuth';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
@@ -25,8 +25,7 @@ type RoomParams = {
   id: string;
 };
 
-export default function AdminRoom() {
-  const { user } = useAuth();
+export default function AdminRoom(): JSX.Element {
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;

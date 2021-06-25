@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ReactNode } from 'react';
 import cx from 'classnames';
 
@@ -20,13 +22,13 @@ export default function Question({
   children,
   isAnswered = false,
   isHighlighted = false,
-}: QuestionProps) {
+}: QuestionProps): JSX.Element {
   return (
     <DivQuestion
       className={cx(
         'question',
         { answered: isAnswered },
-        { highlighted: isHighlighted && !isAnswered}
+        { highlighted: isHighlighted && !isAnswered }
       )}
     >
       <p>{content}</p>
