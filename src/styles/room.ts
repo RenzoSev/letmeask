@@ -23,6 +23,14 @@ export const PageRoom = styled.div`
       outline: none;
     }
   }
+
+  @media (max-width: 1024px) {
+    padding: 0 2rem 2rem 2rem;
+
+    form {
+      padding: 0.5rem;
+    }
+  }
 `;
 
 export const DivContent = styled.div`
@@ -47,7 +55,7 @@ export const DivContent = styled.div`
 
   @media (max-width: 1024px) {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.5rem;
   }
 `;
 
@@ -78,6 +86,7 @@ export const RoomTitle = styled.div`
 
   @media (max-width: 1024px) {
     display: flex;
+    gap: 0.5rem;
     justify-content: center;
     align-items: center;
 
@@ -100,7 +109,7 @@ export const FormFooter = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
-  
+
   > span {
     font-size: 14px;
     color: #737380;
@@ -109,11 +118,21 @@ export const FormFooter = styled.div`
     button {
       background: transparent;
       border: 0;
-      color: #835AFD;
+      color: #835afd;
       text-decoration: underline;
       font-size: 14px;
       font-weight: 500;
       cursor: pointer;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+    
+    button {
+      font-size: 0.8rem;
+      height: 40px;
+      width: 100%;
     }
   }
 `;
@@ -134,9 +153,16 @@ export const UserInfo = styled.div`
     font-weight: 500;
     font-size: 14px;
   }
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const DivQuestionList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-top: 32px;
 `;
 
