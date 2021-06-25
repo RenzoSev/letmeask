@@ -26,24 +26,29 @@ export const PageRoom = styled.div`
 `;
 
 export const DivContent = styled.div`
-    max-width: 1120px;
-    margin: 0 auto;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > img {
+    max-height: 45px;
+  }
+
+  > div {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 16px;
 
-    > img {
-      max-height: 45px;
+    button {
+      height: 40px;
     }
+  }
 
-    > div {
-      display: flex;
-      gap: 16px;
-
-      button {
-        height: 40px;
-      }
-    }
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 export const MainContent = styled.main`
@@ -66,9 +71,27 @@ export const RoomTitle = styled.div`
     background: #e559f9;
     border-radius: 9999px;
     padding: 8px 16px;
-    color: #FFF;
+    color: #fff;
     font-weight: 500;
     font-size: 14px;
+  }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 32px 0 24px;
+
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    span {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+    }
   }
 `;
 
