@@ -1,3 +1,4 @@
+import { RiSunFill, RiMoonFill } from 'react-icons/ri';
 import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -14,6 +15,7 @@ import light from './styles/themes/light';
 
 import GlobalStyle from './styles/global';
 import dark from './styles/themes/dark';
+import ButtonChangeTheme from './styles/app';
 
 export default function App() {
   const [theme, setTheme] = usePersistedState('light', light);
@@ -22,7 +24,10 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <button type="button" onClick={changeTheme}>TEMA</button>
+      <ButtonChangeTheme type="button" onClick={changeTheme}>
+        {theme.title === 'light' ? <RiSunFill /> : <RiMoonFill />}
+      </ButtonChangeTheme>
+
       <AuthContextProvider>
         <Switch>
           <Route path="/rooms/new" component={NewRoom} />
