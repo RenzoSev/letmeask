@@ -38,5 +38,8 @@ npm start
 
 ## 💃 Presentation 💃 
 ### 🖼️ Images 🖼️
-
+![desktop-home](https://user-images.githubusercontent.com/73757018/123520847-49aefb00-d689-11eb-92ca-5d9e531d61b9.png)
+![mobile-rooms](https://user-images.githubusercontent.com/73757018/123520849-4d428200-d689-11eb-980e-1c416f5e67a8.png)
+![mobile-admin-rooms](https://user-images.githubusercontent.com/73757018/123520854-503d7280-d689-11eb-9abd-ef905da82e62.png)
 ### 📹 Video 📹
+https://user-images.githubusercontent.com/73757018/123520958-fdb08600-d689-11eb-8d59-6c35fa7abc7e.mp4
