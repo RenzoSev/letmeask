@@ -21,6 +21,7 @@ export const PageRoom = styled.div`
       resize: vertical;
       min-height: 130px;
       outline: none;
+      color: ${({ theme }) => theme.colors.text}
     }
   }
 
