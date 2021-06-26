@@ -1,8 +1,9 @@
-import { FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
+
 import { useHistory } from 'react-router-dom';
 
 import Button from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 import { database } from '../services/firebase';
 
 import {
@@ -15,7 +16,7 @@ import {
 import illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.svg';
-import { useState } from 'react';
+import UserImage from '../components/UserImage';
 
 export function Home() {
   const history = useHistory();
@@ -62,6 +63,7 @@ export function Home() {
       </aside>
 
       <main>
+        <UserImage applyInDesktop />
         <MainContent>
           <img src={logoImg} alt="Letmeask" />
           <ButtonCreateRoom onClick={handleCreateRoom}>

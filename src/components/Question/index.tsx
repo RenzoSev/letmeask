@@ -1,4 +1,7 @@
-import { ReactNode } from 'react';
+/* eslint-disable react/require-default-props */
+
+import React, { ReactNode } from 'react';
+
 import cx from 'classnames';
 
 import { DivQuestion, DivUserInfo } from './styles';
@@ -26,7 +29,7 @@ export default function Question({
       className={cx(
         'question',
         { answered: isAnswered },
-        { highlighted: isHighlighted && !isAnswered}
+        { highlighted: isHighlighted && !isAnswered },
       )}
     >
       <p>{content}</p>

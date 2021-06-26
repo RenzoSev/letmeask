@@ -44,6 +44,12 @@ export const PageAuth = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  @media (max-width: 1024px) {
+    aside {
+      display: none;
+    }
+  }
 `;
 
 export const MainContent = styled.div`
@@ -71,6 +77,7 @@ export const MainContent = styled.div`
       padding: 0 16px;
       background: #FFF;
       border: 1px solid #a8a8b3;
+      outline: none;
     }
 
     button {

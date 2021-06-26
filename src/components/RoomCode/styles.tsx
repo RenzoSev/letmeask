@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-export const ButtonRoomCode = styled.button`
+const ButtonRoomCode = styled.button`
   height: 40px;
   border-radius: 8px;
   overflow: hidden;
 
-  background: #fff;
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.text};
   border: 1px solid #835afd;
   cursor: pointer;
 
@@ -30,3 +31,5 @@ export const ButtonRoomCode = styled.button`
     font-weight: 500;
   }
 `;
+
+export default ButtonRoomCode;

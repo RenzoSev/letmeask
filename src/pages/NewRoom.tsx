@@ -1,14 +1,15 @@
-import { FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
+
 import { Link, useHistory } from 'react-router-dom';
 
 import Button from '../components/Button';
 
+import useAuth from '../hooks/useAuth';
+import { database } from '../services/firebase';
+
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import { PageAuth, MainContent } from '../styles/auth';
-import { useAuth } from '../hooks/useAuth';
-import { useState } from 'react';
-import { database } from '../services/firebase';
 
 function NewRoom() {
   const { user } = useAuth();
@@ -29,7 +30,7 @@ function NewRoom() {
       authorId: user?.id,
     });
 
-    history.push(`/rooms/${firebaseRoom.key}`)
+    history.push(`/rooms/${firebaseRoom.key}`);
   }
 
   return (
@@ -50,13 +51,15 @@ function NewRoom() {
           <form onSubmit={handleCreateRoom}>
             <input
               placeholder="Nome da sala"
-              onChange={({target}) => setNewRoom(target.value)}
+              onChange={({ target }) => setNewRoom(target.value)}
               value={newRoom}
             />
             <Button type="submit">Criar sala</Button>
           </form>
           <p>
-            Quer entar em uma sala existente? <Link to="/">Clique aqui</Link>
+            Quer entar em uma sala existente?
+            {' '}
+            <Link to="/">Clique aqui</Link>
           </p>
         </MainContent>
       </main>

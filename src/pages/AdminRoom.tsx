@@ -1,10 +1,15 @@
+import React from 'react';
+
 import { useHistory, useParams } from 'react-router-dom';
 
 import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
+import UserImage from '../components/UserImage';
+import Loading from '../components/Loading';
 
-import { useAuth } from '../hooks/useAuth';
+import useRoom from '../hooks/useRoom';
+import { database } from '../services/firebase';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
@@ -17,20 +22,21 @@ import {
   MainContent,
   RoomTitle,
   DivQuestionList,
+  DivContentAdminRoom,
 } from '../styles/room';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import useLoading from '../hooks/useLoading';
 
 type RoomParams = {
   id: string;
 };
 
 export default function AdminRoom() {
-  const { user } = useAuth();
-  const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
+
+  const history = useHistory();
+  const { loading } = useLoading(roomId);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -60,65 +66,74 @@ export default function AdminRoom() {
 
   return (
     <PageRoom>
+      <UserImage />
       <header>
         <DivContent>
           <img src={logoImg} alt="Letmeask" />
-          <div>
+          <DivContentAdminRoom>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>
               Encerrar sala
             </Button>
-          </div>
+          </DivContentAdminRoom>
         </DivContent>
       </header>
 
-      <MainContent>
-        <RoomTitle>
-          <h1>{title}</h1>
-          {questions.length > 0 && (
-            <span>
-              {questions.length}{' '}
-              {questions.length > 1 ? 'perguntas' : 'pergunta'}
-            </span>
-          )}
-        </RoomTitle>
+      {loading ? (
+        <Loading />
+      ) : (
+        <MainContent>
+          <RoomTitle>
+            <h1>{title}</h1>
+            {questions.length > 0 && (
+              <span>
+                {questions.length}
+                {' '}
+                {questions.length > 1 ? 'perguntas' : 'pergunta'}
+              </span>
+            )}
+          </RoomTitle>
 
-        <DivQuestionList>
-          {questions.map((question) => (
-            <Question
-              key={question.id}
-              content={question.content}
-              author={question.author}
-              isAnswered={question.isAnswered}
-              isHighlighted={question.isHighlighted}
-            >
-              {!question.isAnswered && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                  >
-                    <img src={checkImg} alt="Marcar pergunta como respondida" />
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleHighlightQuestion(question.id)}
-                  >
-                    <img src={answerImg} alt="Dar destaque à pergunta" />
-                  </button>
-                </>
-              )}
-              <button
-                type="button"
-                onClick={() => handleDeleteQuestion(question.id)}
+          <DivQuestionList>
+            {questions.map((question) => (
+              <Question
+                key={question.id}
+                content={question.content}
+                author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
-                <img src={deleteImg} alt="Remover pergunta" />
-              </button>
-            </Question>
-          ))}
-        </DivQuestionList>
-      </MainContent>
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                    >
+                      <img
+                        src={checkImg}
+                        alt="Marcar pergunta como respondida"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt="Dar destaque à pergunta" />
+                    </button>
+                  </>
+                )}
+                <button
+                  type="button"
+                  onClick={() => handleDeleteQuestion(question.id)}
+                >
+                  <img src={deleteImg} alt="Remover pergunta" />
+                </button>
+              </Question>
+            ))}
+          </DivQuestionList>
+        </MainContent>
+      )}
     </PageRoom>
   );
 }
