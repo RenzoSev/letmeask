@@ -31,6 +31,7 @@ Each day we receive a new video about the project. The projects and techs are ch
 
 ## 🏃‍♀️ How to run the project <a name="how-to-run-the-project"></a>
 ### 1. Download the project
+__To work with this method, you will need your own key configuration from [Firebase](https://firebase.google.com/)__.
 ```
 yarn add
 npm install
