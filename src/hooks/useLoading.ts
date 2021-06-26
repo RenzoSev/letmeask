@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import useRoom from './useRoom';
 
 export default function useLoading(id: string) {
-  const { questions } = useRoom(id);
+  const { hasBeenRequested } = useRoom(id);
   const [loading, setLoading] = useState(true);
   const [hasBeenLoaded, setHasBeenLoaded] = useState(false);
 
   useEffect(() => {
-    if (questions.length && !hasBeenLoaded) {
+    if (hasBeenRequested && !hasBeenLoaded) {
       setLoading(!loading);
       setHasBeenLoaded(!hasBeenLoaded);
     }
@@ -16,7 +16,7 @@ export default function useLoading(id: string) {
       setLoading(!loading);
       setHasBeenLoaded(!hasBeenLoaded);
     };
-  }, [questions]);
+  }, [hasBeenRequested]);
 
   return { loading };
 }
