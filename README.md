@@ -1,4 +1,4 @@
-# 🤔 Letmeask 🤔
+![logo](https://raw.githubusercontent.com/RenzoSev/letmeask/6197634c9829f71ef09bbf89263a7b734a5e374e/src/assets/images/logo.svg)
 ## About me
 Renzo Sevilha
 <br />
