@@ -17,12 +17,13 @@ Each day we receive a new video about the project. The projects and techs are ch
 
 ## 🖥 Techs 🖥
 <p display="flex">
-<img height="32" width="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
-<img heigth"32" width="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" />
-<img heigth"32" width="32" src="https://jafapps.com.br/wp-content/uploads/2019/01/jafapps_.png" />
+<img height="32" width="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" alt="ReactJS"/>
+<img heigth"32" width="32" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" alt="Typescript" />
+<img heigth"32" width="32" src="https://jafapps.com.br/wp-content/uploads/2019/01/jafapps_.png" alt="Firebase"/>
+<img heigth"32" width="32" src="https://styled-components.com/logo.png" alt="Styled Components" />
 </p>
 
-## 🤔 How to run the project
+## 🏃‍♀️ How to run the project
 ### 1. Download the project
 ```
 yarn add
