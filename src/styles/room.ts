@@ -5,6 +5,8 @@ type LikeButtonProps = {
 };
 
 export const PageRoom = styled.div`
+  padding: 0 2rem 2rem 2rem;
+
   header {
     padding: 24px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.borderHeader};
@@ -21,13 +23,11 @@ export const PageRoom = styled.div`
       resize: vertical;
       min-height: 130px;
       outline: none;
-      color: ${({ theme }) => theme.colors.text}
+      color: ${({ theme }) => theme.colors.text};
     }
   }
 
   @media (max-width: 1024px) {
-    padding: 0 2rem 2rem 2rem;
-
     form {
       padding: 0.5rem;
     }
