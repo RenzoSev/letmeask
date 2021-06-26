@@ -22,6 +22,19 @@ Each day we receive a new video about the project. The projects and techs are ch
 <img heigth"32" width="32" src="https://jafapps.com.br/wp-content/uploads/2019/01/jafapps_.png" />
 </p>
 
+## 🤔 How to run the project
+### 1. Download the project
+```
+yarn add
+npm install
+```
+```
+yarn start
+npm start
+```
+### 2. Acces from Website
+[Link to Letmeask](https://letmeask-e3ce3.web.app)
+
 ## 💃 Presentation 💃 
 ### 🖼️ Images 🖼️
 
