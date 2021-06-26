@@ -36,7 +36,7 @@ export default function AdminRoom() {
   const { title, questions } = useRoom(roomId);
 
   const history = useHistory();
-  const { loading } = useLoading(params.id);
+  const { loading } = useLoading(roomId);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
