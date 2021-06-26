@@ -59,6 +59,17 @@ export const DivContent = styled.div`
   }
 `;
 
+export const DivContentAdminRoom = styled.div`
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      font-size: 0.85rem;
+    }
+  }
+`;
+
 export const MainContent = styled.main`
   max-width: 800px;
   margin: 0 auto;

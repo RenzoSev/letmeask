@@ -6,7 +6,7 @@ import { database } from '../services/firebase';
 import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
-import UserImageMobile from '../components/UserImageMobile';
+import UserImage from '../components/UserImage';
 
 import useAuth from '../hooks/useAuth';
 import useRoom from '../hooks/useRoom';
@@ -76,7 +76,7 @@ export default function Room() {
 
   return (
     <PageRoom>
-      <UserImageMobile />
+      <UserImage />
       <header>
         <DivContent>
           <img src={logoImg} alt="Letmeask" />

@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import RoomCode from '../components/RoomCode';
 import Question from '../components/Question';
+import UserImage from '../components/UserImage';
 
 import useRoom from '../hooks/useRoom';
 import { database } from '../services/firebase';
@@ -20,6 +21,7 @@ import {
   MainContent,
   RoomTitle,
   DivQuestionList,
+  DivContentAdminRoom,
 } from '../styles/room';
 
 type RoomParams = {
@@ -60,15 +62,16 @@ export default function AdminRoom() {
 
   return (
     <PageRoom>
+      <UserImage />
       <header>
         <DivContent>
           <img src={logoImg} alt="Letmeask" />
-          <div>
+          <DivContentAdminRoom>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>
               Encerrar sala
             </Button>
-          </div>
+          </DivContentAdminRoom>
         </DivContent>
       </header>
 

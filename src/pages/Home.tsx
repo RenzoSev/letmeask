@@ -16,6 +16,7 @@ import {
 import illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.svg';
+import UserImage from '../components/UserImage';
 
 export function Home() {
   const history = useHistory();
@@ -62,6 +63,7 @@ export function Home() {
       </aside>
 
       <main>
+        <UserImage applyInDesktop />
         <MainContent>
           <img src={logoImg} alt="Letmeask" />
           <ButtonCreateRoom onClick={handleCreateRoom}>
