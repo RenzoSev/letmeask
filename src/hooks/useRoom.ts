@@ -39,6 +39,7 @@ type FireBaseQuestions = Record<
 function useRoom(roomId: string) {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([]);
+  const [hasBeenRequested, setHasBeenRequested] = useState(false);
   const [title, setTitle] = useState('');
 
   useEffect(() => {
@@ -63,6 +64,7 @@ function useRoom(roomId: string) {
       );
       setTitle(databaseRoom.title);
       setQuestions(parsedQuestion);
+      setHasBeenRequested(!hasBeenRequested);
     });
 
     return () => {
@@ -70,7 +72,7 @@ function useRoom(roomId: string) {
     };
   }, [roomId, user?.id]);
 
-  return { questions, title };
+  return { questions, title, hasBeenRequested };
 }
 
 export default useRoom;
